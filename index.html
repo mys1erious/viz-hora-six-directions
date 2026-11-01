@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HORA No.6 · one watch, six art directions</title>
+<meta name="description" content="One product hero, same words, six art directions: Swiss poster, amber terminal, clay toy, 1-bit desktop, sumi ink, maison noir.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/archivo@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/archivo@5.3.0/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/archivo@5.3.0/900.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vt323@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fredoka@5.3.0/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fredoka@5.3.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/pixelify-sans@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/pixelify-sans@5.3.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/shippori-mincho@5.3.0/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/shippori-mincho@5.3.0/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bodoni-moda@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bodoni-moda@5.3.0/400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bodoni-moda@5.3.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-sans@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-sans@5.3.0/600.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#141311;color:#e9e4d8;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{min-height:100svh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#app{display:flex;flex-direction:column;align-items:center;gap:16px;padding:16px;min-height:100svh}
+#wrap{position:relative;flex:none;touch-action:pan-y}
+#stage{position:absolute;left:0;top:0;width:540px;height:675px;transform-origin:0 0;overflow:hidden;background:#141311}
+body.clean #app{padding:0;justify-content:center;height:100svh}
+body.clean #panel,body.clean .hint{display:none}
+@media (min-width:900px) and (min-aspect-ratio:1/1){#app{flex-direction:row;justify-content:center;gap:40px;height:100svh;padding:24px}}
+
+/* grid overview */
+#cam{position:absolute;left:0;top:0;width:540px;height:675px;transform-origin:0 0}
+#rip{position:absolute;left:0;top:0;border-radius:50%;border:2.5px solid rgba(255,255,255,.95);box-shadow:0 0 0 1px rgba(0,0,0,.35),inset 0 0 0 1px rgba(0,0,0,.25);pointer-events:none;opacity:0;z-index:9}
+#ghead{position:absolute;left:24px;top:26px;width:492px}
+#ghead .eb{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9d978a}
+#ghead h1{margin-top:12px;font:400 44px/1.02 'Instrument Serif',serif;letter-spacing:-.01em;color:#f1ece1}
+#ghead h1 em{color:#d8b36a}
+#gfoot{position:absolute;left:24px;top:640px;width:492px;font-size:12px;color:#9d978a}
+.tile{position:absolute;overflow:hidden;cursor:pointer;outline:1px solid rgba(241,236,225,.14);outline-offset:0}
+.tile.full{cursor:default;outline:0}
+.tlabel{position:absolute;font-size:13px;font-weight:600;color:#e9e4d8;white-space:nowrap}
+.tlabel b{font-weight:400;color:#8a8478;margin-right:6px}
+.art{position:absolute;left:0;top:0;width:540px;height:675px;overflow:hidden;transform-origin:0 0}
+.art *{position:absolute}
+.art br,.art span.in{position:static}
+
+/* panel */
+#panel{width:min(100%,520px);display:flex;flex-direction:column;gap:18px}
+@media (min-width:900px) and (min-aspect-ratio:1/1){#panel{width:320px}}
+#chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#chips button{height:44px;border-radius:999px;border:1px solid rgba(233,228,216,.22);font-size:14px;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+#chips button:hover{border-color:rgba(233,228,216,.5)}
+#chips button[aria-pressed=true]{background:#e9e4d8;color:#141311;border-color:#e9e4d8}
+#chips button:focus-visible{outline:2px solid #d8b36a;outline-offset:2px}
+#spec h2{font:400 34px/1 'Instrument Serif',serif;color:#f1ece1}
+#spec p{margin-top:8px;font-size:14px;line-height:1.45;color:#b9b2a4}
+#spec .type{margin-top:12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8a8478}
+#spec .sw{display:flex;gap:6px;margin-top:10px}
+#spec .sw i{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.hint{font-size:12px;color:#7d776c}
+
+/* ── 01 Swiss poster ── */
+.s-sw{background:#f3c613;color:#121110;font-family:Archivo,sans-serif}
+.sw-grid{inset:0;background:repeating-linear-gradient(90deg,rgba(18,17,16,.11) 0 1px,transparent 1px 82px);background-position:24px 0;left:0;top:0;width:540px;height:675px}
+.sw-top{left:24px;top:22px;width:492px;height:28px;display:flex;align-items:baseline;gap:10px}
+.sw-top *{position:static}
+.sw-top b{font-weight:900;font-size:22px;letter-spacing:-.02em}
+.sw-top span{font-size:12px;font-weight:800}
+.sw-top nav{margin-left:auto;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;word-spacing:14px}
+.sw-rule{left:24px;top:56px;width:492px;height:3px;background:#121110;transform-origin:0 50%}
+.sw-big{left:0;top:62px;width:540px;height:332px;overflow:hidden}
+.sw-big span{position:absolute;left:4px;top:-62px;font-weight:900;font-size:450px;line-height:1;letter-spacing:-.07em}
+.sw-watch{left:240px;top:112px;width:280px;height:280px;overflow:visible}
+.sw-h{left:24px;top:400px;width:300px;font-weight:800;font-size:56px;line-height:.92;letter-spacing:-.04em}
+.sw-h .ln{position:relative;display:block;overflow:hidden;height:52px}
+.sw-h .ln span{position:relative;display:block}
+.sw-sub{left:352px;top:404px;width:164px;font-size:12px;line-height:1.42}
+.sw-cta{left:352px;top:478px;width:164px;height:46px;background:#121110;color:#f3c613;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:12px;font-weight:800;white-space:nowrap}
+.sw-cta *{position:static}
+.sw-cta i{font-style:normal;color:#ff4a3a}
+.sw-cta:hover{background:#e1251b;color:#121110;cursor:pointer}.sw-cta:hover i{color:#121110}
+.sw-spec{left:24px;top:584px;width:492px;height:70px;border-top:3px solid #121110;display:grid;grid-template-columns:repeat(4,1fr)}
+.sw-spec div{position:static;padding-top:10px}
+.sw-spec div *{position:static;display:block}
+.sw-spec small{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.sw-spec b{font-size:26px;font-weight:900;letter-spacing:-.03em;margin-top:2px}
+
+/* ── 02 Amber terminal ── */
+.s-tm{background:#120c05;color:#ffb43a;font-family:VT323,monospace;text-shadow:0 0 6px rgba(255,160,40,.55)}
+.tm-top{left:24px;top:18px;width:492px;font-size:20px;display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,180,58,.4);padding-bottom:6px}
+.tm-top *{position:static}
+.tm-cmd{left:24px;top:58px;font-size:24px;color:#ffe2a8;white-space:pre}
+.tm-sweep{left:42px;top:152px;width:248px;height:248px;border-radius:50%}
+.tm-watch{left:36px;top:146px;width:260px;height:260px;overflow:visible}
+.tm-read{left:330px;top:160px;width:190px;font-size:21px;line-height:1.45;white-space:pre}
+.tm-read .k{position:static;color:rgba(255,180,58,.55)}
+.tm-h{left:24px;top:428px;width:500px;font-size:84px;line-height:.86;color:#ffe2a8;white-space:pre;text-shadow:0 0 10px rgba(255,170,50,.7)}
+.tm-g{left:24px;top:428px;width:500px;font-size:84px;line-height:.86;white-space:pre;color:#ff5a2a;opacity:0;mix-blend-mode:screen}
+.tm-sub{left:24px;top:584px;font-size:21px;color:rgba(255,180,58,.7)}
+.tm-cta{left:24px;top:618px;font-size:26px;background:#ffb43a;color:#120c05;padding:0 10px;text-shadow:none;white-space:pre}
+.tm-cta:hover{background:transparent;color:#ffe2a8;box-shadow:inset 0 0 0 2px #ffb43a;cursor:pointer}
+.tm-bar{left:300px;top:624px;font-size:20px;white-space:pre;color:rgba(255,180,58,.75)}
+.tm-scan{left:0;top:0;width:540px;height:675px;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.32) 0 1px,transparent 1px 3px),radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.6))}
+
+/* ── 03 Clay toy ── */
+.s-cl{background:radial-gradient(120% 90% at 28% 18%,#ffeadd,#ffd2ba 62%,#ffc2a4);color:#2b2f5c;font-family:Fredoka,sans-serif}
+.cl-blob{border-radius:50%;box-shadow:0 16px 28px rgba(150,60,30,.18),inset -6px -8px 14px rgba(0,0,0,.08),inset 6px 6px 12px rgba(255,255,255,.55)}
+.cl-nav{left:24px;top:22px;width:492px;height:48px;display:flex;align-items:center;gap:10px}
+.cl-nav *{position:static}
+.cl-nav b{font-weight:700;font-size:30px;letter-spacing:-.02em}
+.cl-nav i{font-style:normal;font-size:13px;font-weight:700;color:#fff6ef;background:#ff6f4f;border-radius:999px;padding:3px 9px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.12)}
+.cl-nav span{font-size:16px;font-weight:500;background:rgba(255,255,255,.55);border-radius:999px;padding:7px 16px;box-shadow:0 6px 12px rgba(150,60,30,.12),inset 0 2px 0 rgba(255,255,255,.8)}
+.cl-nav span:first-of-type{margin-left:auto}
+.cl-watch{left:270px;top:262px;width:0;height:0}
+.cl-strap{left:-60px;width:120px;height:108px;background:linear-gradient(90deg,#f05a3c,#ff8466 30%,#ff8a6b 60%,#e5553a);box-shadow:inset 0 -10px 16px rgba(120,30,10,.18),0 14px 24px rgba(150,60,30,.2)}
+.cl-strap.t{top:-198px;border-radius:30px 30px 16px 16px}
+.cl-strap.b{top:88px;border-radius:16px 16px 30px 30px}
+.cl-crown{left:108px;top:-18px;width:30px;height:36px;border-radius:10px;background:#ffd66e;box-shadow:inset -4px -5px 8px rgba(160,100,0,.3),inset 3px 3px 5px rgba(255,255,255,.6)}
+.cl-case{left:-120px;top:-120px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#ffa58c,#ff6f4f 46%,#e2512f);box-shadow:inset -12px -16px 26px rgba(150,30,10,.35),inset 12px 12px 22px rgba(255,255,255,.45),0 28px 44px rgba(150,60,30,.32)}
+.cl-dial{left:-92px;top:-92px;width:184px;height:184px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fffaf3,#fff0e0);box-shadow:inset 6px 8px 14px rgba(160,80,40,.22),inset -4px -4px 10px rgba(255,255,255,.9)}
+.cl-ix{border-radius:999px;box-shadow:inset -2px -3px 4px rgba(0,0,0,.18),inset 2px 2px 3px rgba(255,255,255,.5)}
+.cl-hand{border-radius:999px;box-shadow:inset -2px -2px 4px rgba(0,0,0,.2),0 4px 6px rgba(43,47,92,.25)}
+.cl-cap{left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff1b8,#ffd66e 55%,#e9b23d);box-shadow:0 3px 6px rgba(43,47,92,.3)}
+.cl-stk{left:384px;top:118px;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff1b8,#ffd66e 55%,#f1bb44);box-shadow:0 14px 22px rgba(150,90,20,.25),inset -5px -7px 10px rgba(160,100,0,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.cl-stk *{position:static}
+.cl-stk b{font-size:30px;font-weight:700}
+.cl-stk span{font-size:12px;font-weight:500}
+.cl-h{left:34px;top:458px;width:480px;font-size:60px;line-height:.98;font-weight:700;letter-spacing:-.02em}
+.cl-h .w{position:relative;display:inline-block;transform-origin:50% 90%}
+.cl-sub{left:36px;top:590px;width:260px;font-size:15px;line-height:1.35;font-weight:500;color:rgba(43,47,92,.78)}
+.cl-cta{left:318px;top:588px;width:194px;height:60px;border-radius:999px;background:radial-gradient(120% 140% at 30% 20%,#ff9478,#ff6f4f 55%,#e9533a);color:#fff6ef;font-size:19px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:inset -6px -8px 12px rgba(150,30,10,.3),inset 6px 6px 10px rgba(255,255,255,.4),0 14px 22px rgba(150,60,30,.3);transform-origin:50% 100%}
+
+.cl-cta:hover{background:radial-gradient(120% 140% at 30% 20%,#ffb39c,#ff8466 55%,#f0644a);box-shadow:inset -6px -8px 12px rgba(150,30,10,.3),inset 6px 6px 10px rgba(255,255,255,.5),0 20px 30px rgba(150,60,30,.36);cursor:pointer}
+/* ── 04 1-bit desktop ── */
+.s-dk{background:radial-gradient(circle,#16140f .95px,transparent 1.15px) 0 0/4px 4px,#f5f2ea;color:#16140f;font-family:'Pixelify Sans',monospace}
+.dk-bar{left:0;top:0;width:540px;height:26px;background:#f5f2ea;border-bottom:2px solid #16140f;display:flex;align-items:center;gap:18px;padding:0 14px;font-size:14px;font-weight:700}
+.dk-bar *{position:static}
+.dk-bar .lg{width:16px;height:16px;background:#16140f;color:#f5f2ea;font-size:11px;display:grid;place-items:center}
+.dk-bar .on{background:#16140f;color:#f5f2ea;padding:0 6px;margin:0 -6px}
+.dk-bar .ck{margin-left:auto}
+.dk-win{background:#f5f2ea;border:2px solid #16140f;box-shadow:4px 4px 0 #16140f}
+.dk-tb{left:0;top:0;right:0;height:24px;border-bottom:2px solid #16140f;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.dk-tb *{position:static}
+.dk-win.act .dk-tb{background:repeating-linear-gradient(0deg,#16140f 0 1px,#f5f2ea 1px 3px);background-clip:content-box;padding:5px 4px}
+.dk-tb span{background:#f5f2ea;padding:0 8px;line-height:14px}
+.dk-win.act .dk-tb .cb{position:absolute;left:10px;top:5px;width:14px;height:14px;border:2px solid #16140f;background:#f5f2ea;box-shadow:0 0 0 2px #f5f2ea}
+.dk-a{left:24px;top:46px;width:296px;height:318px}
+.dk-a canvas{left:26px;top:36px;width:240px;height:240px;image-rendering:pixelated}
+.dk-a .st{left:0;right:0;bottom:0;height:24px;border-top:2px solid #16140f;font-size:13px;display:flex;justify-content:space-between;align-items:center;padding:0 10px}
+.dk-a .st *{position:static}
+.dk-b{left:208px;top:312px;width:308px;height:274px}
+.dk-b h2{left:16px;top:38px;width:280px;font-size:36px;line-height:1;font-weight:700}
+.dk-b p{left:16px;top:118px;width:276px;font-size:15px;line-height:1.25}
+.dk-b .pr{left:16px;top:226px;font-size:22px;font-weight:700}
+.dk-btn{height:30px;border:2px solid #16140f;border-radius:8px;display:grid;place-items:center;font-size:14px;font-weight:700;background:#f5f2ea}
+.dk-btn:hover{background:#16140f;color:#f5f2ea;cursor:pointer}
+.dk-btn.def{box-shadow:0 0 0 2px #f5f2ea,0 0 0 5px #16140f}
+.dk-car{display:inline-block;position:static;width:2px;height:30px;background:#16140f;vertical-align:-3px;margin-left:3px}
+.dk-c{left:24px;top:462px;width:160px;height:96px}
+.dk-c b{left:0;right:0;top:36px;text-align:center;font-size:30px;font-weight:700}
+.dk-ico{width:84px;text-align:center;font-size:13px}
+.dk-ico svg{position:relative;display:block;margin:0 auto 4px;shape-rendering:crispEdges}
+.dk-ico span{position:relative;background:#f5f2ea;padding:0 4px}
+.dk-zr{border:2px dotted #16140f;opacity:0}
+
+/* ── 05 Sumi ink ── */
+.s-ik{background-color:#ece5d6;color:#1c1915;font-family:'Shippori Mincho',serif}
+.ik-top{left:40px;top:24px;width:460px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.24em;padding-bottom:12px;border-bottom:1px solid rgba(28,25,21,.35)}
+.ik-top *{position:static}
+.ik-enso{left:55px;top:108px;width:320px;height:320px}
+.ik-hands{left:55px;top:108px;width:320px;height:320px;overflow:visible}
+.ik-v{right:30px;top:88px;writing-mode:vertical-rl;font-size:44px;line-height:1.3;font-weight:800;letter-spacing:.06em}
+.ik-v .c{position:relative;display:inline-block}
+.ik-v2{right:150px;top:92px;writing-mode:vertical-rl;font-size:12px;letter-spacing:.42em;color:rgba(28,25,21,.62)}
+.ik-seal{left:300px;top:352px;width:56px;height:56px;background:#c4402b;border-radius:4px;display:grid;place-items:center;color:#ece5d6;font-size:36px;font-weight:800;box-shadow:inset 0 0 0 3px #c4402b,inset 0 0 0 4.5px rgba(236,229,214,.85)}
+.ik-rule{left:40px;top:462px;width:460px;height:1px;background:rgba(28,25,21,.35)}
+.ik-h{left:40px;top:482px;font-size:32px;font-weight:500;letter-spacing:-.005em}
+.ik-sub{left:40px;top:530px;width:300px;font-size:12.5px;line-height:1.75;font-weight:500;color:rgba(28,25,21,.78)}
+.ik-cta{left:40px;top:624px;font-size:15px;font-weight:800;border-bottom:1px solid #1c1915;padding-bottom:3px}
+.ik-cta i{position:static;font-style:normal;color:#c4402b}
+.ik-cta:hover{color:#c4402b;border-color:#c4402b;cursor:pointer}
+.ik-fo{right:40px;top:626px;font-size:12px;letter-spacing:.2em;text-align:right}
+.ik-fo2{right:40px;top:478px;writing-mode:vertical-rl;font-size:12px;letter-spacing:.38em;color:rgba(28,25,21,.62)}
+
+/* ── 06 Maison noir ── */
+.s-mx{background:radial-gradient(90% 70% at 50% 40%,#1a1612,#0e0c0a 70%);color:#efe6d6;font-family:'Bodoni Moda',serif}
+.mx-vi{left:0;top:30px;width:540px;text-align:center;font-weight:700;font-size:560px;line-height:1;color:rgba(201,164,106,.055)}
+.mx-top{left:28px;top:26px;width:484px;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#c9a46a}
+.mx-top *{position:static}
+.mx-top b{font-weight:400;font-size:26px;color:#efe6d6;padding-left:.5em}
+.mx-line{left:28px;top:70px;width:484px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,106,.5),transparent)}
+.mx-watch{left:110px;top:112px;width:320px;height:320px;overflow:visible}
+.mx-h{left:0;top:448px;width:540px;text-align:center;font-style:italic;font-size:46px;letter-spacing:-.01em}
+.mx-sub{left:0;top:516px;width:540px;text-align:center;font-size:10px;letter-spacing:.3em;color:#c9a46a}
+.mx-cta{left:172px;top:550px;width:196px;height:48px;border:1px solid #c9a46a;display:grid;place-items:center;font-style:italic;font-size:17px;color:#efe6d6}
+.mx-cta:hover{background:#c9a46a;color:#0e0c0a;cursor:pointer}
+.mx-pr{left:0;top:612px;width:540px;text-align:center;font-size:12px;letter-spacing:.24em;color:rgba(239,230,214,.6)}
+.mx-foot{left:28px;top:640px;width:484px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,164,106,.7);border-top:1px solid rgba(201,164,106,.25);padding-top:10px}
+.mx-foot *{position:static}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="wrap"><div id="stage">
+    <div id="cam"><div id="ghead"><div class="eb"><span>HORA No.6 · hero section</span><span>06 directions</span></div>
+      <h1>One watch. Same words.<br><em>Six art directions.</em></h1></div>
+    <div id="gfoot">Every page here is live code. No image files.<span class="hint"> Tap one to open it.</span></div></div><div id="rip"></div>
+  </div></div>
+  <aside id="panel">
+    <div id="chips" role="group" aria-label="Art direction"></div>
+    <div id="spec" aria-live="polite"></div>
+    <div class="hint">Tap a page, swipe or use the arrow keys to change direction. Esc for all six.</div>
+  </aside>
+</div>
+<script>
+const Q = new URLSearchParams(location.search);
+const CLEAN = Q.has('clean'), PLAY = Q.has('play');
+if (CLEAN) document.body.classList.add('clean');
+const AW = 540, AH = 675;
+
+// seeded PRNG (mulberry32) and a stateless hash for per-moment randomness
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const hash = n => mulberry32(n * 9973 + 6)();
+const clamp = (x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P = (lt,a,b)=>clamp((lt-a)/(b-a));
+const eo = x=>1-Math.pow(1-x,4), eio = x=>x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2;
+const back = x=>{const c=1.4;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const lerp=(a,b,k)=>a+(b-a)*k;
+const pad=n=>String(Math.floor(n)).padStart(2,'0');
+// the watch shows 10:08:32 at t=0 and keeps running
+const T0 = 10*3600 + 8*60 + 32;
+const clock = t=>{const s=T0+t;return{s, sec:(s%60)*6, min:(s/60%60)*6, hr:(s/3600%12)*30, txt:`${pad(s/3600%24)}:${pad(s/60%60)}:${pad(s%60)}`}};
+const svgRot=(el,a)=>el.setAttribute('transform',`rotate(${a.toFixed(3)})`);
+const ticks=(n,f)=>Array.from({length:n},(_,i)=>f(i)).join('');
+const COPY = {h:'Time, kept by hand.', sub:'A hand-wound watch with a 72-hour reserve. 38 mm steel, made in batches of 600.', price:'€390'};
+
+const STYLES = [
+{ key:'sw', name:'Swiss poster', short:'Swiss', focus:[380,252],
+  note:'A six-column grid, flush-left type, a numeral too big for the page and one red hand.',
+  type:'Archivo 900 · 800 · 400', pal:['#f3c613','#121110','#f7f5f0','#e1251b'],
+  html:()=>`<div class="sw-grid"></div>
+  <div class="sw-top"><b>HORA</b><span>No. 6</span><nav>Watch Movement Journal Reserve</nav></div>
+  <div class="sw-rule"></div>
+  <div class="sw-big"><span>6</span></div>
+  <svg class="sw-watch" viewBox="-140 -140 280 280">
+    <circle r="139" fill="#f3c613"/><circle r="126" fill="#f7f5f0" stroke="#121110" stroke-width="11"/>
+    ${ticks(60,i=>i%5?`<rect x="-1.3" y="-117" width="2.6" height="9" fill="#121110" transform="rotate(${i*6})"/>`:`<rect x="${i?-5:-8}" y="-117" width="${i?10:16}" height="34" fill="#121110" transform="rotate(${i*6})"/>`)}
+    <text y="-48" text-anchor="middle" font-size="13" font-weight="900" letter-spacing="1">HORA</text>
+    <text y="62" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="2">72 H</text>
+    <g class="hh"><rect x="-7" y="-74" width="14" height="92" fill="#121110"/></g>
+    <g class="mh"><rect x="-5" y="-110" width="10" height="128" fill="#121110"/></g>
+    <g class="sh"><rect x="-1.6" y="-114" width="3.2" height="146" fill="#e1251b"/></g>
+    <circle r="5.5" fill="#e1251b"/></svg>
+  <div class="sw-h"><span class="ln"><span>Time,</span></span><span class="ln"><span>kept by</span></span><span class="ln"><span>hand.</span></span></div>
+  <div class="sw-sub">${COPY.sub}</div>
+  <div class="sw-cta"><span>Reserve one · ${COPY.price}</span><i>→</i></div>
+  <div class="sw-spec"><div><small>Calibre</small><b>H-6</b></div><div><small>Reserve</small><b class="n" data-n="72" data-u=" h">72 h</b></div><div><small>Case</small><b class="n" data-n="38" data-u=" mm">38 mm</b></div><div><small>Batch</small><b class="n" data-n="600" data-u="">600</b></div></div>`,
+  init(el){ this.r={hh:el.querySelector('.hh'),mh:el.querySelector('.mh'),sh:el.querySelector('.sh'),big:el.querySelector('.sw-big span'),rule:el.querySelector('.sw-rule'),ln:[...el.querySelectorAll('.sw-h .ln span')],n:[...el.querySelectorAll('.sw-spec .n')]}; },
+  update(el,t,lt){ const r=this.r,c=clock(t);
+    svgRot(r.hh,c.hr); svgRot(r.mh,c.min); svgRot(r.sh,c.sec);
+    r.big.style.transform=`translateY(${(1-eo(P(lt,0,.8)))*100}%)`;
+    r.rule.style.transform=`scaleX(${eo(P(lt,.05,.7))})`;
+    r.ln.forEach((s,i)=>s.style.transform=`translateY(${(1-eo(P(lt,.12+i*.08,.72+i*.08)))*110}%)`);
+    const k=eo(P(lt,.2,1.2)); r.n.forEach(b=>b.textContent=Math.round(b.dataset.n*k)+b.dataset.u);
+  }},
+{ key:'tm', name:'Amber terminal', short:'Amber', focus:[166,276],
+  note:'One phosphor colour, scanlines, a radar sweep that follows the seconds hand, copy as command output.',
+  type:'VT323', pal:['#120c05','#ffb43a','#ffe2a8','#ff5a2a'],
+  html:()=>`<div class="tm-top"><span>HORA/OS 6.0 · tty1</span><span class="tc">10:08:32</span></div>
+  <div class="tm-cmd"></div>
+  <div class="tm-sweep"></div>
+  <svg class="tm-watch" viewBox="-130 -130 260 260" fill="none" stroke="#ffb43a">
+    <circle r="124" stroke-opacity=".55"/><circle r="98" stroke-opacity=".4" stroke-dasharray="2 6"/>
+    <path d="M-124 0H124M0 -124V124" stroke-opacity=".18" stroke-dasharray="3 5"/>
+    ${ticks(60,i=>`<line y1="${i%5?-112:-104}" y2="-121" stroke-width="${i%5?1.2:3}" transform="rotate(${i*6})"/>`)}
+    ${ticks(12,i=>{const a=i*Math.PI/6;return`<text x="${(Math.sin(a)*84).toFixed(1)}" y="${(-Math.cos(a)*84+6).toFixed(1)}" text-anchor="middle" font-size="19" fill="#ffb43a" stroke="none">${i||12}</text>`})}
+    <g class="hh"><line y1="10" y2="-56" stroke-width="5"/></g>
+    <g class="mh"><line y1="12" y2="-88" stroke-width="3"/></g>
+    <g class="sh"><line y1="22" y2="-114" stroke-width="1.6" stroke="#ffe2a8"/></g>
+    <rect x="-4" y="-4" width="8" height="8" fill="#ffe2a8" stroke="none"/></svg>
+  <div class="tm-read"></div>
+  <div class="tm-h"></div><div class="tm-g"></div>
+  <div class="tm-sub">// hand-wound · 72 h reserve · batch of 600</div>
+  <div class="tm-cta">[ RESERVE ONE  ${COPY.price} ]</div>
+  <div class="tm-bar"></div>
+  <div class="tm-scan"></div>`,
+  init(el){ this.r={hh:el.querySelector('.hh'),mh:el.querySelector('.mh'),sh:el.querySelector('.sh'),tc:el.querySelector('.tc'),cmd:el.querySelector('.tm-cmd'),sw:el.querySelector('.tm-sweep'),rd:el.querySelector('.tm-read'),h:el.querySelector('.tm-h'),g:el.querySelector('.tm-g'),bar:el.querySelector('.tm-bar'),cta:el.querySelector('.tm-cta')};
+    this.r.sw.style.background='conic-gradient(from 0deg,rgba(255,180,58,0) 0deg,rgba(255,180,58,0) 290deg,rgba(255,180,58,.34) 360deg)'; },
+  update(el,t,lt){ const r=this.r,c=clock(t);
+    svgRot(r.hh,c.hr); svgRot(r.mh,c.min); svgRot(r.sh,c.sec);
+    r.sw.style.transform=`rotate(${c.sec}deg)`;
+    r.tc.textContent=c.txt;
+    const cur=(Math.floor(t*2.2)%2)?'█':' ';
+    const cmd='hora@no6:~$ ./reserve --model 06';
+    const nc=Math.floor(lt*44); r.cmd.textContent=cmd.slice(0,nc)+(nc<cmd.length?'█':'');
+    const head='TIME, KEPT\nBY HAND.', nh=Math.floor(P(lt,.35,1)*head.length);
+    const txt=head.slice(0,nh)+(nh<head.length?'█':cur); r.h.textContent=txt;
+    // glitch: a short horizontal shake on a seeded schedule
+    const b=Math.floor(t*10), on=hash(b)<.09 && lt>1;
+    r.g.textContent=txt; r.g.style.opacity=on?.85:0; r.g.style.transform=`translate(${on?(hash(b+7)*12-6):0}px,0)`;
+    r.h.style.transform=on?`translateX(${hash(b+3)*6-3}px)`:'';
+    const left=72*3600-t, n=Math.floor(Math.min(1,P(lt,.2,.9))*5);
+    const rows=[['TIME   ',c.txt],['RESERVE',`${pad(left/3600)}:${pad(left/60%60)}:${pad(left%60)}`],['BEAT   ','21600/h'],['CASE   ','38MM STEEL'],['BATCH  ','212/600 LEFT']];
+    r.rd.innerHTML=rows.slice(0,n).map(([k,v])=>`<span class="k">${k}</span> ${v}`).join('\n');
+    const fill=Math.round(P(lt,.3,1.1)*10); r.bar.textContent=`PWR [${'█'.repeat(fill)}${'░'.repeat(10-fill)}] ${fill*10}%`;
+    el.style.opacity=.965+.035*Math.sin(t*53);
+  }},
+{ key:'cl', name:'Clay toy', short:'Clay', focus:[270,262],
+  note:'Soft light from the top left, puffy volumes, a sticker, and a button that squishes when pressed.',
+  type:'Fredoka 700 · 500', pal:['#ffd9c4','#ff6f4f','#2b2f5c','#9fe3c4','#ffd66e'],
+  html:()=>{
+    const B=[[452,312,62,'#9fe3c4'],[38,150,48,'#ffd66e'],[470,500,44,'#9cc9ff'],[60,372,30,'#9fe3c4'],[112,92,22,'#9cc9ff'],[505,236,26,'#ffd66e']];
+    const blobs=B.map(([x,y,s,c],i)=>`<div class="cl-blob" data-i="${i}" style="left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;background:radial-gradient(circle at 34% 30%,#fff 0,${c} 42%,color-mix(in oklab,${c},#7a3b20 22%))"></div>`).join('');
+    const ix=ticks(12,i=>{const a=i*Math.PI/6,R=72,big=i%3==0,w=big?12:10,h=big?26:10,col=big?'#9fe3c4':'#2b2f5c';
+      return `<div class="cl-ix" style="left:${92+Math.sin(a)*R-w/2}px;top:${92-Math.cos(a)*R-h/2}px;width:${w}px;height:${h}px;background:${i==0?'#ffd66e':col};transform:rotate(${i*30}deg)"></div>`});
+    const hand=(c,w,len,col)=>`<div class="cl-hand ${c}" style="left:${-w/2}px;top:${-len}px;width:${w}px;height:${len+w}px;background:${col};transform-origin:50% ${len}px"></div>`;
+    return `${blobs}<div class="cl-nav"><b>hora</b><i>No.6</i><span>shop</span><span>story</span></div>
+    <div class="cl-watch"><div class="cl-strap t"></div><div class="cl-strap b"></div><div class="cl-crown"></div><div class="cl-case"></div>
+      <div class="cl-dial">${ix}</div>${hand('h',18,52,'#2b2f5c')}${hand('m',13,76,'#2b2f5c')}${hand('s',5,82,'#ff6f4f')}<div class="cl-cap"></div></div>
+    <div class="cl-stk"><b>72h</b><span>reserve</span></div>
+    <h1 class="cl-h">${'Time, kept<br>by hand.'.split(' ').map(w=>w.includes('<br>')?w.split('<br>').map(x=>`<span class="w">${x}</span>`).join('<br>'):`<span class="w">${w}</span>`).join(' ')}</h1>
+    <p class="cl-sub">Hand-wound, with a 72-hour reserve. Made 600 at a time.</p>
+    <div class="cl-cta">Reserve · ${COPY.price}</div>`},
+  init(el){ this.r={w:el.querySelector('.cl-watch'),h:el.querySelector('.cl-hand.h'),m:el.querySelector('.cl-hand.m'),s:el.querySelector('.cl-hand.s'),stk:el.querySelector('.cl-stk'),bl:[...el.querySelectorAll('.cl-blob')],wd:[...el.querySelectorAll('.cl-h .w')],cta:el.querySelector('.cl-cta')}; },
+  update(el,t,lt){ const r=this.r,c=clock(t);
+    // seconds hand ticks with a springy settle
+    const fs=c.s%1, sa=Math.floor(c.s%60)*6 + 6*(1-Math.exp(-fs*14)*Math.cos(fs*22));
+    r.h.style.transform=`rotate(${c.hr}deg)`; r.m.style.transform=`rotate(${c.min}deg)`; r.s.style.transform=`rotate(${sa}deg)`;
+    const pop=back(P(lt,0,.6));
+    r.w.style.transform=`translateY(${Math.sin(t*1.6)*4}px) rotate(${Math.sin(t*1.1)*2.5}deg) scale(${.85+.15*pop})`;
+    r.stk.style.transform=`rotate(${-10+Math.sin(t*1.3)*7}deg) scale(${back(P(lt,.25,.75))})`;
+    r.bl.forEach((b,i)=>b.style.transform=`translateY(${Math.sin(t*(1.1+i*.17)+i*2)*7}px) scale(${back(P(lt,.05*i,.5+.05*i))})`);
+    r.wd.forEach((w,i)=>{const k=back(P(lt,.15+i*.07,.6+i*.07)); w.style.transform=`translateY(${(1-k)*30}px) scale(${.7+.3*k})`; w.style.opacity=P(lt,.15+i*.07,.35+i*.07)});
+    const pp=(t+1.2)%2.6, sq=pp<.12?Math.sin(pp/.12*Math.PI):0;
+    r.cta.style.transform=`scale(${1+.05*sq},${1-.09*sq})`;
+  }},
+{ key:'dk', name:'1-bit desktop', short:'1-bit', focus:[174,200],
+  note:'Two colours only. Dithered shading, hard shadows, pinstriped title bars and windows that zoom open.',
+  type:'Pixelify Sans 700 · 400', pal:['#f5f2ea','#16140f'],
+  html:()=>`<div class="dk-bar"><span class="lg">H</span><span>File</span><span>Edit</span><span>View</span><span class="sp">Special</span><span class="ck">10:08 AM</span></div>
+  <div class="dk-ico" style="left:418px;top:58px"><svg width="40" height="40" viewBox="0 0 20 20"><path d="M2 2h14l2 2v14H2z" fill="#f5f2ea" stroke="#16140f" stroke-width="1.5"/><path d="M5 2h9v6H5z" fill="#16140f"/><path d="M11 3h2v4h-2z" fill="#f5f2ea"/><path d="M5 11h10v6H5z" fill="#f5f2ea" stroke="#16140f"/></svg><span>Movement</span></div>
+  <div class="dk-ico" style="left:418px;top:146px"><svg width="40" height="40" viewBox="0 0 20 20"><path d="M4 1h9l4 4v14H4z" fill="#f5f2ea" stroke="#16140f" stroke-width="1.5"/><path d="M13 1v4h4" fill="none" stroke="#16140f" stroke-width="1.5"/><path d="M7 9h7M7 12h7M7 15h5" stroke="#16140f" stroke-width="1.3"/></svg><span>Journal</span></div>
+  <div class="dk-ico" style="left:418px;top:234px"><svg width="40" height="40" viewBox="0 0 20 20"><circle cx="10" cy="11" r="7" fill="#f5f2ea" stroke="#16140f" stroke-width="1.5"/><path d="M10 7v4h3" fill="none" stroke="#16140f" stroke-width="1.5"/><path d="M4 3l3 2M16 3l-3 2" stroke="#16140f" stroke-width="1.5"/></svg><span>Alarm</span></div>
+  <div class="dk-win dk-a"><div class="dk-tb"><span>HORA No.6</span></div><canvas width="120" height="120"></canvas><div class="st"><span>Hand-wound</span><span>72 h reserve</span></div></div>
+  <div class="dk-win dk-c"><div class="dk-tb"><span>Alarm</span></div><b class="al">10:08:32</b></div>
+  <div class="dk-zr"></div><div class="dk-zr"></div><div class="dk-zr"></div>
+  <div class="dk-win dk-b act"><div class="dk-tb"><i class="cb"></i><span>Read Me</span></div>
+    <h2>Time, kept<br>by hand.<span class="dk-car"></span></h2>
+    <p>${COPY.sub}</p>
+    <div class="pr">EUR 390</div>
+    <div class="dk-btn" style="left:118px;top:226px;width:64px">Later</div>
+    <div class="dk-btn def" style="left:194px;top:226px;width:96px">Reserve</div></div>`,
+  init(el){
+    const cv=el.querySelector('canvas'), N=120, base=new Uint8Array(N*N), C=59.5;
+    const put=(b,x,y)=>{x=Math.round(x);y=Math.round(y);if(x>=0&&y>=0&&x<N&&y<N)b[y*N+x]=1};
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){const d=Math.hypot(x-C,y-C);
+      if(d>=55&&d<58.5)base[y*N+x]=1; else if(d>=50&&d<55&&(x+y)%2==0)base[y*N+x]=1; else if(d>=48.6&&d<50)base[y*N+x]=1;}
+    for(let i=0;i<60;i++){const a=i*Math.PI/30, r0=i%5?44:38;for(let r=r0;r<=46;r+=.5){put(base,C+Math.sin(a)*r,C-Math.cos(a)*r);if(i%5==0)put(base,C+Math.sin(a)*r+Math.cos(a),C-Math.cos(a)*r+Math.sin(a))}}
+    const F={'1':'010110010010111','2':'111001111100111','3':'111001111001111','6':'111100111101111','9':'111101111001111'};
+    const txt=(s,cx,cy)=>{const w=s.length*4-1;[...s].forEach((ch,k)=>{const g=F[ch];for(let j=0;j<15;j++)if(g[j]=='1')for(let dy=0;dy<2;dy++)for(let dx=0;dx<2;dx++)put(base,cx-w+k*8+(j%3)*2+dx,cy-5+Math.floor(j/3)*2+dy)})};
+    txt('12',C+1,C-28); txt('3',C+30,C+1); txt('6',C+1,C+29); txt('9',C-28,C+1);
+    this.r={cv,ctx:cv.getContext('2d'),img:cv.getContext('2d').createImageData(N,N),base,N,C,put,
+      ck:el.querySelector('.ck'),al:el.querySelector('.al'),car:el.querySelector('.dk-car'),b:el.querySelector('.dk-b'),zr:[...el.querySelectorAll('.dk-zr')],sp:el.querySelector('.sp')};
+  },
+  update(el,t,lt){ const r=this.r,c=clock(t),{N,C}=r,buf=r.base.slice();
+    const hand=(deg,len,w,tail=0)=>{const a=deg*Math.PI/180,sx=Math.sin(a),cy=-Math.cos(a);for(let k=-tail;k<=len;k+=.4)for(let o=-(w-1)/2;o<=(w-1)/2;o+=.5)r.put(buf,C+sx*k-cy*o,C+cy*k+sx*o)};
+    hand(c.hr,24,3.5); hand(c.min,36,2.5); hand(c.sec,42,1,8);
+    for(let y=-2;y<=2;y++)for(let x=-2;x<=2;x++)if(x*x+y*y<=5)r.put(buf,C+x,C+y);
+    const d=r.img.data; for(let i=0;i<N*N;i++){const v=buf[i]?22:245;d[i*4]=v;d[i*4+1]=buf[i]?20:242;d[i*4+2]=buf[i]?15:234;d[i*4+3]=255}
+    r.ctx.putImageData(r.img,0,0);
+    r.ck.textContent=`${Math.floor(c.s/3600%12)||12}:${pad(c.s/60%60)} AM`; r.al.textContent=c.txt;
+    r.car.style.visibility=(Math.floor(t*1.8)%2)?'hidden':'visible';
+    r.sp.className=(t%5>3.8&&t%5<4.4)?'sp on':'sp';
+    // zoom-rect open animation from the Journal icon to the Read Me window
+    const z=P(lt,0,.42); const from=[438,150,44,44], to=[208,312,308,274];
+    r.zr.forEach((e,i)=>{const k=eio(clamp(z*1.25-i*.12));const R=from.map((f,j)=>lerp(f,to[j],k));
+      Object.assign(e.style,{left:R[0]+'px',top:R[1]+'px',width:R[2]+'px',height:R[3]+'px',opacity:(z>0&&z<1&&k>0)?1:0})});
+    r.b.style.visibility=lt<.42?'hidden':'visible';
+  }},
+{ key:'ik', name:'Sumi ink', short:'Sumi', focus:[215,268],
+  note:'Vertical type, a brushed ensō for a dial, a vermilion seal and a lot of paper left empty.',
+  type:'Shippori Mincho 800 · 500', pal:['#ece5d6','#1c1915','#c4402b'],
+  html:()=>`<div class="ik-top"><span>HORA ／ No.6</span><span>時計 ・ 第六号</span></div>
+  <canvas class="ik-enso" width="960" height="960"></canvas>
+  <svg class="ik-hands" viewBox="-160 -160 320 320">
+    ${ticks(4,i=>`<line y1="-104" y2="-94" stroke="#1c1915" stroke-width="2" transform="rotate(${i*90})"/>`)}
+    <g class="hh"><line y1="12" y2="-62" stroke="#1c1915" stroke-width="3.2" stroke-linecap="round"/></g>
+    <g class="mh"><line y1="14" y2="-98" stroke="#1c1915" stroke-width="2" stroke-linecap="round"/></g>
+    <g class="sh"><line y1="22" y2="-108" stroke="#c4402b" stroke-width="1.1"/></g>
+    <circle r="3.6" fill="#1c1915"/><circle r="1.4" fill="#c4402b"/></svg>
+  <div class="ik-v">${'手で巻く、<br>静かな時間。'.split('<br>').map(s=>[...s].map(ch=>`<span class="c">${ch}</span>`).join('')).join('<br>')}</div>
+  <div class="ik-v2">第六号 手巻き時計</div>
+  <div class="ik-seal">刻</div>
+  <div class="ik-rule"></div>
+  <div class="ik-h">${COPY.h}</div>
+  <div class="ik-sub">A hand-wound watch with a seventy-two hour reserve. Thirty-eight millimetres of steel, made in batches of six hundred.</div>
+  <div class="ik-cta">Reserve one, ${COPY.price} <i>→</i></div>
+  <div class="ik-fo2">二〇二六年 秋</div>
+  <div class="ik-fo">— 06</div>`,
+  init(el){
+    // washi: seeded speckle and fibres, tiled
+    const pc=document.createElement('canvas'); pc.width=pc.height=240; const px=pc.getContext('2d'), rnd=mulberry32(11);
+    for(let i=0;i<2600;i++){px.fillStyle=`rgba(60,45,25,${rnd()*.07})`;px.fillRect(rnd()*240,rnd()*240,1+rnd()*1.5,1+rnd()*1.5)}
+    px.lineWidth=.6; for(let i=0;i<70;i++){const x=rnd()*240,y=rnd()*240,a=rnd()*6.28,l=6+rnd()*18;px.strokeStyle=`rgba(90,70,40,${.05+rnd()*.08})`;px.beginPath();px.moveTo(x,y);px.quadraticCurveTo(x+Math.cos(a)*l/2+rnd()*4,y+Math.sin(a)*l/2+rnd()*4,x+Math.cos(a)*l,y+Math.sin(a)*l);px.stroke()}
+    el.style.backgroundImage=`url(${pc.toDataURL()})`; el.style.backgroundSize='240px';
+    // ensō: pre-rendered dry-brush stroke, revealed with an angular clip
+    const off=document.createElement('canvas'); off.width=off.height=960; const o=off.getContext('2d'), S=3, R=128*S, cx=480, cy=480, A0=-1.9, SW=5.75;
+    const br=mulberry32(5), NB=34, bristle=Array.from({length:NB},(_,j)=>({o:(j/(NB-1)-.5),dry:.55+br()*.45,ph:br()*10,ink:.75+br()*.25}));
+    o.fillStyle='#1c1915';
+    for(let k=0;k<=2400;k++){const u=k/2400, a=A0+u*SW;
+      const press=Math.min(1,u/.04)*(1-.55*Math.pow(u,1.6))*(1+.12*Math.sin(u*17)), w=27*S*press;
+      const rr=R*(1+.035*Math.sin(u*5.3+1)-.02*u);
+      for(const b of bristle){ if(u>b.dry && (Math.sin(u*90+b.ph)>-.2 || u>b.dry+.12)) continue;
+        const rad=rr+b.o*w, x=cx+Math.cos(a)*rad, y=cy+Math.sin(a)*rad; o.globalAlpha=b.ink*(u<.03?1:.9);
+        o.beginPath(); o.arc(x,y,Math.max(.6,w/NB*1.25),0,6.283); o.fill(); }
+    }
+    o.globalAlpha=1;
+    this.r={c:el.querySelector('.ik-enso').getContext('2d'),off,A0,SW,hh:el.querySelector('.hh'),mh:el.querySelector('.mh'),sh:el.querySelector('.sh'),seal:el.querySelector('.ik-seal'),ch:[...el.querySelectorAll('.ik-v .c')],last:-1};
+  },
+  update(el,t,lt){ const r=this.r,c=clock(t);
+    svgRot(r.hh,c.hr); svgRot(r.mh,c.min); svgRot(r.sh,c.sec);
+    const p=eio(P(lt,0,1.15));
+    if(p!==r.last){ const g=r.c; g.clearRect(0,0,960,960);
+      if(p>0){ g.save(); g.beginPath(); g.moveTo(480,480); g.arc(480,480,700,r.A0-.35,r.A0-.35+(r.SW+.5)*p); g.closePath(); g.clip(); g.drawImage(r.off,0,0); g.restore(); }
+      r.last=p; }
+    const s=P(lt,1.05,1.3); r.seal.style.opacity=s>0?1:0; r.seal.style.transform=`rotate(-5deg) scale(${1.35-.35*eo(s)})`;
+    r.ch.forEach((e,i)=>{const k=P(lt,.2+i*.06,.6+i*.06); e.style.opacity=k; e.style.transform=`translateY(${(1-eo(k))*-14}px)`});
+  }},
+{ key:'mx', name:'Maison noir', short:'Noir', focus:[270,272],
+  note:'Didone contrast, hairline gold, roman numerals and a slow band of light across the dial.',
+  type:'Bodoni Moda 400 · italic · 700', pal:['#0e0c0a','#c9a46a','#efe6d6'],
+  html:()=>`<div class="mx-vi">VI</div>
+  <div class="mx-top"><span>Maison</span><b>HORA</b><span>Réserver</span></div>
+  <div class="mx-line"></div>
+  <svg class="mx-watch" viewBox="-160 -160 320 320">
+    <defs><radialGradient id="mxd" cx="42%" cy="34%" r="78%"><stop offset="0" stop-color="#2b251d"/><stop offset="1" stop-color="#0b0a08"/></radialGradient>
+      <linearGradient id="mxg" x1="0" x2="1"><stop offset="0" stop-color="#f3e1b6"/><stop offset=".5" stop-color="#d5b077"/><stop offset="1" stop-color="#9c763f"/></linearGradient>
+      <linearGradient id="mxs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e6c2" stop-opacity="0"/><stop offset=".5" stop-color="#f6e6c2" stop-opacity=".13"/><stop offset="1" stop-color="#f6e6c2" stop-opacity="0"/></linearGradient>
+      <clipPath id="mxc"><circle r="143"/></clipPath></defs>
+    <circle class="mx-c1" r="153" fill="none" stroke="#c9a46a" stroke-width="1" pathLength="1" stroke-dasharray="1 1"/>
+    <circle r="144" fill="url(#mxd)"/>
+    <circle class="mx-c2" r="144" fill="none" stroke="#c9a46a" stroke-width=".7" pathLength="1" stroke-dasharray="1 1"/>
+    <g clip-path="url(#mxc)"><rect class="mx-sh" x="-170" y="-46" width="340" height="92" fill="url(#mxs)"/></g>
+    ${ticks(60,i=>{const a=i*Math.PI/30;return i%5?`<circle cx="${(Math.sin(a)*134).toFixed(2)}" cy="${(-Math.cos(a)*134).toFixed(2)}" r=".95" fill="#efe6d6" fill-opacity=".55"/>`:''})}
+    ${ticks(12,i=>{const a=i*Math.PI/6,R=i%3?0:106,lab=['XII','III','VI','IX'][i/3];
+      return i%3?`<line y1="-118" y2="-133" stroke="url(#mxg)" stroke-width="2" transform="rotate(${i*30})"/>`:`<text x="${(Math.sin(a)*R).toFixed(1)}" y="${(-Math.cos(a)*R+10).toFixed(1)}" text-anchor="middle" font-size="29" fill="#efe6d6">${lab}</text>`})}
+    <text y="-46" text-anchor="middle" font-size="13" letter-spacing="5" fill="#efe6d6">HORA</text>
+    <text y="-30" text-anchor="middle" font-size="9" font-style="italic" fill="#c9a46a">à remontage manuel</text>
+    <text y="62" text-anchor="middle" font-size="12" font-style="italic" fill="#c9a46a">No. 6</text>
+    <g class="hh"><path d="M0-80 7.5 0 0 14-7.5 0z" fill="url(#mxg)"/><path d="M0-80 0 14-7.5 0z" fill="#000" fill-opacity=".28"/></g>
+    <g class="mh"><path d="M0-120 5.5 0 0 16-5.5 0z" fill="url(#mxg)"/><path d="M0-120 0 16-5.5 0z" fill="#000" fill-opacity=".28"/></g>
+    <g class="sh"><line y1="28" y2="-132" stroke="#efe6d6" stroke-width="1"/><circle cy="20" r="3.4" fill="#efe6d6"/></g>
+    <circle r="4.6" fill="url(#mxg)"/><circle r="1.6" fill="#0e0c0a"/></svg>
+  <div class="mx-h">${COPY.h}</div>
+  <div class="mx-sub">HAND-WOUND · SEVENTY-TWO HOURS · 38 MM</div>
+  <div class="mx-cta">Reserve one</div>
+  <div class="mx-pr">€ 390</div>
+  <div class="mx-foot"><span>No. 6 · Autumn 2026</span><span>Hand-wound</span></div>`,
+  init(el){ this.r={hh:el.querySelector('.hh'),mh:el.querySelector('.mh'),sh:el.querySelector('.sh'),c1:el.querySelector('.mx-c1'),c2:el.querySelector('.mx-c2'),shine:el.querySelector('.mx-sh'),top:el.querySelector('.mx-top b'),h:el.querySelector('.mx-h'),sub:el.querySelector('.mx-sub'),cta:el.querySelector('.mx-cta')}; },
+  update(el,t,lt){ const r=this.r,c=clock(t);
+    svgRot(r.hh,c.hr); svgRot(r.mh,c.min); svgRot(r.sh,c.sec);
+    r.c1.style.strokeDashoffset=1-eio(P(lt,0,1.2)); r.c2.style.strokeDashoffset=-(1-eio(P(lt,.15,1.3)));
+    svgRot(r.shine,-35+t*9);
+    const k=eo(P(lt,.1,1.2)); r.top.style.letterSpacing=(.5+.5*(1-k))+'em'; r.top.style.opacity=k;
+    [r.h,r.sub,r.cta].forEach((e,i)=>{const q=eo(P(lt,.35+i*.12,1.1+i*.12)); e.style.opacity=q; e.style.transform=`translateY(${(1-q)*16}px)`});
+  }},
+];
+
+// ── build ──
+const stage=document.getElementById('stage'), wrap=document.getElementById('wrap'), cam=document.getElementById('cam'), rip=document.getElementById('rip');
+const N=STYLES.length, GW=156, GH=195;
+const gridRect=i=>[24+(i%3)*(GW+12), 166+Math.floor(i/3)*(GH+42), GW, GH];
+const tiles=STYLES.map((s,i)=>{
+  const tile=document.createElement('div'); tile.className='tile'; tile.dataset.i=i;
+  const art=document.createElement('div'); art.className='art s-'+s.key; art.innerHTML=s.html(); tile.append(art);
+  const lab=document.createElement('div'); lab.className='tlabel'; lab.innerHTML=`<b>0${i+1}</b>${s.name}`;
+  cam.append(tile, lab); s.init(art); return {tile,art,lab};
+});
+const chips=document.getElementById('chips'), spec=document.getElementById('spec');
+['All',...STYLES.map(s=>s.short)].forEach((n,i)=>{const b=document.createElement('button');b.textContent=n;b.onclick=e=>{i?go(i-1,e):toGrid()};chips.append(b)});
+
+// ── view state ──
+const now=()=>performance.now()/1000;
+const act=STYLES.map(()=>-100);           // activation time per style, drives its intro
+let mode='grid', cur=0, zoom=null, wipe=null;  // zoom: {dir:+1 in / -1 out, t0}; wipe: {to,t0,x,y}
+const ZD=.85, WD=.8;
+function toGrid(){ if(mode!=='single')return; finishWipe(); mode='zoom'; zoom={dir:-1,t0:now()}; sync(); }
+function go(i,e){
+  i=(i+N)%N;
+  const pt=e&&e.clientX!==undefined&&stage.contains(e.target)?(()=>{const R=wrap.getBoundingClientRect(),k=R.width/AW;return[(e.clientX-R.left)/k,(e.clientY-R.top)/k]})():null;
+  if(mode==='grid'){ cur=i; mode='zoom'; zoom={dir:1,t0:now()}; if(pt||PLAY)ripple=[...(pt||gridCenter(i)),now()]; sync(); return; }
+  if(mode!=='single'||i===cur) return;
+  finishWipe(); const [x,y]=pt||STYLES[cur].focus;
+  wipe={to:i,t0:now(),x,y}; act[i]=now(); if(pt||PLAY)ripple=[x,y,now()]; sync(i);
+}
+let ripple=null; const gridCenter=i=>{const g=gridRect(i);return[g[0]+g[2]/2,g[1]+g[3]/2]};
+function finishWipe(){ if(wipe){cur=wipe.to;wipe=null} }
+function sync(show=cur){
+  [...chips.children].forEach((b,i)=>b.setAttribute('aria-pressed', String(mode==='grid'||(mode==='zoom'&&zoom.dir<0)?i===0:i===show+1)));
+  if(mode==='grid'||(mode==='zoom'&&zoom.dir<0)) spec.innerHTML=`<h2>Six directions</h2><p>One fictional watch and one set of words. Only the art direction changes: type, colour, layout, motion and the dial itself.</p>`;
+  else{const s=STYLES[show]; spec.innerHTML=`<h2>${s.name}</h2><p>${s.note}</p><div class="type">${s.type}</div><div class="sw">${s.pal.map(c=>`<i style="background:${c}" title="${c}"></i>`).join('')}</div>`}
+}
+let swiped=false;
+stage.addEventListener('click',e=>{ if(PLAY)return; if(swiped){swiped=false;return} const t=e.target.closest('.tile'); if(mode==='grid'&&t) go(+t.dataset.i,e); else if(mode==='single') go((wipe?wipe.to:cur)+1,e); });
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight')go((wipe?wipe.to:cur)+1); else if(e.key==='ArrowLeft')go((wipe?wipe.to:cur)-1);
+  else if(e.key==='Escape'||e.key==='0')toGrid(); else if(e.key>='1'&&e.key<='6'){ if(mode==='grid'){go(+e.key-1)} else go(+e.key-1); }
+});
+let sx=null; wrap.addEventListener('pointerdown',e=>{sx=[e.clientX,e.clientY]});
+wrap.addEventListener('pointerup',e=>{ if(!sx||mode!=='single')return; const dx=e.clientX-sx[0],dy=e.clientY-sx[1]; sx=null;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3){ swiped=true; go((wipe?wipe.to:cur)+(dx<0?1:-1),e); } });
+
+// self-playing demo for the recorder
+const SCRIPT=[[1.2,()=>go(0)],[5.2,()=>go(1)],[8.5,()=>go(2)],[11.8,()=>go(3)],[15.1,()=>go(4)],[18.4,()=>go(5)],[22.0,()=>toGrid()]];
+let si=0, tStart=null;
+
+// ── layout ──
+let S=1;
+function layout(){
+  const vw=document.documentElement.clientWidth, vh=innerHeight;
+  if(CLEAN) S=Math.min(vw/AW, vh/AH);
+  else if(vw>=900&&vw>vh) S=Math.min((vh-48)/AH,(vw-48-360)/AW);
+  else S=(Math.min(vw,560)-32)/AW;
+  wrap.style.width=AW*S+'px'; wrap.style.height=AH*S+'px'; stage.style.transform=`scale(${S})`;
+}
+addEventListener('resize',layout); layout(); sync();
+
+// ── frame ──
+function setRect(el,[x,y,w,h]){el.style.left=x+'px';el.style.top=y+'px';el.style.width=w+'px';el.style.height=h+'px'}
+function frame(ms){
+  const t=ms/1000; if(tStart===null)tStart=t; const pt=t-tStart;
+  if(PLAY) while(si<SCRIPT.length&&pt>=SCRIPT[si][0]) SCRIPT[si++][1]();
+  let z = mode==='grid'?0:1;
+  if(mode==='zoom'){ const k=P(t-zoom.t0,0,ZD); z=eio(zoom.dir>0?k:1-k); if(k>=1){mode=zoom.dir>0?'single':'grid'; zoom=null; z=mode==='single'?1:0; sync()} }
+  let wk=0; if(wipe){ wk=P(t-wipe.t0,0,WD); if(wk>=1){finishWipe(); wk=0} }
+  const head=1-z;
+  // camera: view rect V shrinks geometrically from the stage to the current tile, about a fixed point
+  const tr=gridRect(cur), w=AW*Math.pow(GW/AW,z), f=(AW-w)/(AW-GW), V=[f*tr[0],f*tr[1],w,w*AH/AW], K=AW/w;
+  cam.style.transform=`translate(${(-V[0]*K).toFixed(3)}px,${(-V[1]*K).toFixed(3)}px) scale(${K.toFixed(5)})`;
+  document.getElementById('ghead').style.opacity=head; document.getElementById('gfoot').style.opacity=head;
+  tiles.forEach((o,i)=>{
+    const s=STYLES[i], isCur=i===cur, isIn=wipe&&wipe.to===i, vis=z<1||isCur||isIn;
+    o.tile.style.display=vis?'':'none'; o.lab.style.display=z<1?'':'none';
+    if(!vis) return;
+    const rect=isIn?V:gridRect(i); setRect(o.tile,rect);
+    o.tile.style.zIndex=isIn?3:isCur?2:1;
+    o.tile.className='tile'+(z>0?' full':'');
+    o.tile.style.opacity=(isCur||isIn)?1:1-.6*z;
+    o.tile.style.borderRadius=4*(1-z)+'px';
+    if(isIn){ const R=Math.hypot(Math.max(wipe.x,AW-wipe.x),Math.max(wipe.y,AH-wipe.y)), e=eio(wk), q=V[2]/AW;
+      o.tile.style.clipPath=`circle(${(R*e*q).toFixed(2)}px at ${(wipe.x*q).toFixed(2)}px ${(wipe.y*q).toFixed(2)}px)`;
+      o.art.style.transform=`scale(${q}) translate(${wipe.x}px,${wipe.y}px) scale(${1.06-.06*eo(wk)}) translate(${-wipe.x}px,${-wipe.y}px)`;
+    } else { o.tile.style.clipPath=''; o.art.style.transform=`scale(${rect[2]/AW})`; }
+    const g=gridRect(i); setRect(o.lab,[g[0],g[1]+g[3]+9,g[2],18]); o.lab.style.opacity=head;
+    s.update(o.art,t,t-act[i]);
+  });
+  if(ripple){ const k=P(t-ripple[2],0,.55), d=14+70*eo(k); Object.assign(rip.style,{left:ripple[0]-d/2+'px',top:ripple[1]-d/2+'px',width:d+'px',height:d+'px',opacity:k<1?1-k:0}); if(k>=1)ripple=null; }
+  requestAnimationFrame(frame);
+}
+// warm the fonts (the Japanese face is split by unicode-range, so ask for the glyphs we use)
+['900 20px Archivo','800 20px Archivo','400 20px Archivo','20px VT323','700 20px Fredoka','500 20px Fredoka','700 20px "Pixelify Sans"','400 20px "Pixelify Sans"','italic 20px "Bodoni Moda"','20px "Bodoni Moda"','700 20px "Bodoni Moda"','20px "Instrument Serif"','600 20px "Instrument Sans"']
+  .forEach(f=>document.fonts.load(f));
+['800 20px "Shippori Mincho"','500 20px "Shippori Mincho"'].forEach(f=>document.fonts.load(f,'手で巻く静かな時間。第六号時計刻二〇年秋 Time,kept'));
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
